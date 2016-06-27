@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Search, type: :model do
   describe 'validations' do
+    it { is_expected.to validate_presence_of(:user) }
     it { is_expected.to validate_presence_of(:cep) }
     it { is_expected.to validate_length_of(:cep) }
   end

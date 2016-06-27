@@ -1,6 +1,14 @@
 %h1 CEPSearch
 %p
   - if current_user
-    = 'Bem-vindo!'
+    #search-form
+      = simple_form_for @search, remote: true do |f|
+        = f.hidden_field :user_id, value: current_user.id
+        = f.input :cep, placeholder: 'Digite o CEP a ser pesquisado', input_html: { maxlength: 8, minlength: 8, 'data-mask' => '99999-999' }
+        = f.button :submit
+    #search-result{style: 'displey: none'}
+
+    #search-history
+      = render current_user.searches
   - else
     = link_to "Login com Facebook", signin_path, class: 'btn btn-primary btn-large'
