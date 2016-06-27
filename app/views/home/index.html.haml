@@ -1,0 +1,6 @@
+%h1 CEPSearch
+%p
+  - if current_user
+    = 'Bem-vindo!'
+  - else
+    = link_to "Login com Facebook", signin_path, class: 'btn btn-primary btn-large'

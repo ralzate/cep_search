@@ -11,6 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem "haml-rails", "~> 0.9"
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry'

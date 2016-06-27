@@ -1,5 +1,18 @@
-require 'capybara/rails'
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../../config/environment', __FILE__)
+require 'rspec/rails'
+require 'pry'
 require 'capybara/rspec'
+require 'capybara/rails'
+
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
 
 RSpec.configure do |config|
 
