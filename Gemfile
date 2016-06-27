@@ -12,17 +12,16 @@ gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem "haml-rails", "~> 0.9"
 gem 'omniauth-facebook'
+gem 'httparty'
 
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'rubocop'
 end
 
 group :test do
-  gem 'factory_girl_rails'
   gem 'shoulda-matchers'
 end
 
