@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:provider) }
-    it { is_expected.to validate_presence_of(:uid) }
+    it { is_expected.to validate_presence_of(:provider) }
+  end
+  describe 'relationships' do
+    it { is_expected.to have_many(:searches) }
   end
 
   describe ".create_or_update_by_oauth" do
