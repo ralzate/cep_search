@@ -13,7 +13,7 @@ RSpec.describe CEPSearchService, type: :service do
       }
       response = instance_double("HTTParty::Response", code: 200, body: body.to_json)
       allow(HTTParty).to receive(:get).and_return(response)
-      search = CEPSearchService.search(76872862)
+      search = CEPSearchService.search('76872862')
       expect(search[:status]).to eq(200)
       expect(search[:street]).to eq("Rua Rio Madeira ")
       expect(search[:city_state]).to eq("Setor Institucional - Ariquemes (RO)")
@@ -23,7 +23,7 @@ RSpec.describe CEPSearchService, type: :service do
       body = { message: "CEP não Encontrado!" }
       response = instance_double("HTTParty::Response", code: 404, body: body.to_json)
       allow(HTTParty).to receive(:get).and_return(response)
-      search = CEPSearchService.search(76872862)
+      search = CEPSearchService.search('76872862')
       expect(search[:status]).to eq(404)
       expect(search[:error]).to eq(body[:message])
     end
@@ -32,7 +32,7 @@ RSpec.describe CEPSearchService, type: :service do
       body = { "error" => "Bad Request" }
       response = instance_double("HTTParty::Response", code: 400, body: body.to_json)
       allow(HTTParty).to receive(:get).and_return(response)
-      search = CEPSearchService.search(76872862)
+      search = CEPSearchService.search('76872862')
       expect(search[:status]).to eq(400)
       expect(search[:error]).to eq(body)
     end

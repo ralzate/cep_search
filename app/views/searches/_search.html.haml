@@ -1,5 +1,13 @@
-%p
-  = search.cep
-  = search.street
-  = search.city_state
-  = l(search.created_at)
+%div{class: "#{search.status == 200 ? "alert alert-success" : "alert alert-danger" }"}
+  %h3
+    = search.cep
+    %br
+    %small
+      - if search.error.present?
+        = search.error
+      - else
+        = search.street
+  %p
+    = search.city_state
+  %p
+    = search.created_at.strftime("%d/%m/%Y %H:%M:%S")

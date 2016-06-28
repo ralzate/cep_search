@@ -23,7 +23,7 @@ RSpec.describe Search, type: :model do
       }
       response = instance_double("HTTParty::Response", code: 200, body: body.to_json)
       allow(HTTParty).to receive(:get).and_return(response)
-      search = Search.create(cep: 76872862)
+      search = Search.create(cep: '76872-862', user: User.create(provider: 'facebook', uid: '123123123'))
       expect(search.status).to eq(200)
       expect(search.street).to eq("Rua Rio Madeira ")
       expect(search.city_state).to eq("Setor Institucional - Ariquemes (RO)")
@@ -31,7 +31,7 @@ RSpec.describe Search, type: :model do
 
     it 'should not call CEPSearchService if given cep is invalid' do
       expect(CEPSearchService).not_to receive(:search)
-      Search.create(cep: 123)
+      Search.create(cep: '123', user: User.create(provider: 'facebook', uid: '123123123'))
     end
   end
 end

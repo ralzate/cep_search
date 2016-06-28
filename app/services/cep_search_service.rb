@@ -1,7 +1,7 @@
 require 'httparty'
 class CEPSearchService
   def self.search(cep)
-    response = HTTParty.get('http://correiosapi.apphb.com/cep/'+cep.to_s)
+    response = HTTParty.get('http://correiosapi.apphb.com/cep/'+cep)
     body = JSON.parse response.body
     attributes = { status: response.code }
     if response.code == 200
