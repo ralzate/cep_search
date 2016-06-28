@@ -6,10 +6,10 @@
         = f.input :cep, label: false
         = f.button :submit, "Pesquisar", class: 'btn btn-primary'
         = image_tag 'ajax-loading.svg', style: 'height: 34px; display: none', id: 'ajax_loader'
-    #search-result{style: 'display: none'}
 
     #search-history
       %h3 Últimas Pesquisas
-      = render current_user.searches
+      #search-list
+        = render current_user.searches
   - else
     = link_to "Login com Facebook", signin_path, class: 'btn btn-primary btn-large'
